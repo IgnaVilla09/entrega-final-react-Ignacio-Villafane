@@ -1,6 +1,5 @@
 .containerNavbar {
   width: 100%;
-  height: 10vh;
   display: flex;
   justify-content: space-evenly;
   background-color: rgb(5, 69, 121);

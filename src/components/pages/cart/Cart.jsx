@@ -1,11 +1,27 @@
-
+import { Badge, Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   return (
-    <div>
-        <h1 style={{fontSize: 60, padding: 20}}>Carrito proximamente activo!</h1>
-    </div>
-  )
-}
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "10px",
+        margin: "50px",
+        padding: "10px",
+        border: "2px solid black",
+      }}
+    >
+      <Badge component={"h2"} style={{ fontSize: 60 }}>
+        Carrito próximamente activo!
+      </Badge>
+      <Link to="/checkout">
+        <Button variant="contained">Finalizar compra</Button>
+      </Link>
+    </Box>
+  );
+};
 
-export default Cart
+export default Cart;

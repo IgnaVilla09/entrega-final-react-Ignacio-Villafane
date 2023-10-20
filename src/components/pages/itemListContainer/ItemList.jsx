@@ -2,9 +2,16 @@ import ProductCard from "../../common/productCard/ProductCard";
 
 const ItemList = ({ items }) => {
   return (
-    <section style={{display: "flex", justifyContent:"space-evenly", gap:20}}>
+    <section
+      style={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        gap: 20,
+        paddingTop: "20px",
+      }}
+    >
       {items.map((item) => {
-        return <ProductCard key={item.id} item={item} />
+        return <ProductCard key={item.id} item={item} />;
       })}
     </section>
   );
