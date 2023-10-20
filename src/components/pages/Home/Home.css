@@ -1,0 +1,29 @@
+.filter {
+  position: absolute;
+  width: 100%;
+  background-color: #0008;
+  height: 822px;
+  margin-top: -78px;
+  z-index: 10;
+}
+.img-banner {
+  position: relative;
+  margin-top: -78px;
+  width: 100%;
+  height: 820px;
+  filter: contrast(1.2);
+}
+
+.btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 50%;
+  text-align: center;
+  position: absolute;
+  font-size: 2em;
+  transform: translate(50%, 150%);
+  color: #fff;
+  z-index: 50;
+}
