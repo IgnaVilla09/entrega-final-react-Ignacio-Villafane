@@ -9,9 +9,9 @@ const ItemDetailContainer = () => {
 
   const { id } = useParams();
 
-  const navigate = useNavigate();
+  const { addToCart, getStockProduct } = useContext(CartContext);
 
-  const { addToCart } = useContext(CartContext);
+  let totalQuantity = getStockProduct(+id);
 
   useEffect(() => {
     let producto = products.find((product) => product.id === +id);
@@ -34,7 +34,13 @@ const ItemDetailContainer = () => {
     addToCart(obj);
   };
 
-  return <ItemDetail productSelected={productSelected} onAdd={onAdd} />;
+  return (
+    <ItemDetail
+      productSelected={productSelected}
+      onAdd={onAdd}
+      initial={totalQuantity}
+    />
+  );
 };
 
 export default ItemDetailContainer;

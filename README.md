@@ -1,4 +1,4 @@
-# Tercera Pre entrega CURSO CODERHOUSE REACT JS
+# Entrega final CURSO CODERHOUSE REACT JS
 
 - Utilización de rutas de navegación
 - Utilización de MUI

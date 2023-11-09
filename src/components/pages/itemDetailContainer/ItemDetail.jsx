@@ -4,7 +4,7 @@ import "./ItemDetail.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Badge } from "@mui/material";
 
-export const ItemDetail = ({ productSelected, onAdd }) => {
+export const ItemDetail = ({ productSelected, onAdd, initial }) => {
   return (
     <div>
       <div>
@@ -25,7 +25,11 @@ export const ItemDetail = ({ productSelected, onAdd }) => {
           <p>{productSelected.description}</p>
           <b>$ {productSelected.price}.</b>
         </div>
-        <CounterContainer stock={productSelected.stock} onAdd={onAdd} />
+        <CounterContainer
+          stock={productSelected.stock}
+          onAdd={onAdd}
+          initial={initial}
+        />
       </div>
     </div>
   );

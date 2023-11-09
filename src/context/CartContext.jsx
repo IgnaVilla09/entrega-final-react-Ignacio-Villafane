@@ -3,25 +3,64 @@ export const CartContext = createContext();
 
 const CartContextComponent = ({ children }) => {
   const [cart, setCart] = useState([]);
+
   const addToCart = (product) => {
     let exist = itemExist(product.id);
     if (exist) {
-      console.log("Ya esta en el carrito");
+      let newCart = cart.map((item) => {
+        if (item.id === product.id) {
+          return { ...item, quantity: product.quantity };
+        } else {
+          return item;
+        }
+      });
+      setCart(newCart);
     } else {
-      console.log("Item unico");
+      setCart([...cart, product]);
     }
-    setCart([...cart, product]);
   };
 
   const itemExist = (id) => {
     return cart.some((elemento) => elemento.id === id);
   };
 
-  const clearCart = () => {};
+  const getStockProduct = (id) => {
+    let productFound = cart.find((elemento) => elemento.id === id);
+    return productFound?.quantity;
+  };
 
-  const deleteProduct = () => {};
+  const clearCart = () => {
+    setCart([]);
+  };
 
-  const data = { cart, addToCart, clearCart, deleteProduct };
+  const deleteProduct = (id) => {
+    let CartCleaned = cart.filter((product) => product.id !== id);
+    setCart(CartCleaned);
+  };
+
+  const totalPrice = () => {
+    let total = cart.reduce((i, elemento) => {
+      return i + elemento.price * elemento.quantity;
+    }, 0);
+    return total;
+  };
+
+  const totalQuantity = () => {
+    let total = cart.reduce((i, item) => {
+      return i + item.quantity;
+    }, 0);
+    return total;
+  };
+
+  const data = {
+    cart,
+    addToCart,
+    getStockProduct,
+    clearCart,
+    deleteProduct,
+    totalPrice,
+    totalQuantity,
+  };
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
 
