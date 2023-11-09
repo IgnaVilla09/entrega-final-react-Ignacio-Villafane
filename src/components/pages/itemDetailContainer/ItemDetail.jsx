@@ -24,8 +24,8 @@ export const ItemDetail = ({ productSelected, onAdd }) => {
         <div className="containerDescriptionBtns">
           <p>{productSelected.description}</p>
           <b>$ {productSelected.price}.</b>
-          <CounterContainer stock={productSelected.stock} onAdd={onAdd} />
         </div>
+        <CounterContainer stock={productSelected.stock} onAdd={onAdd} />
       </div>
     </div>
   );

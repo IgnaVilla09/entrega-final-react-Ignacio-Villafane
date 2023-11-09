@@ -1,7 +1,10 @@
 import { Badge, Box, Button } from "@mui/material";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext";
 
 const Cart = () => {
+  const { cart } = useContext(CartContext);
   return (
     <Box
       sx={{
@@ -14,9 +17,12 @@ const Cart = () => {
         border: "2px solid black",
       }}
     >
-      <Badge component={"h2"} style={{ fontSize: 60 }}>
-        Carrito próximamente activo!
-      </Badge>
+      {cart.map((product) => (
+        <div key={product.id}>
+          <h2>{product.title}</h2>
+          <h2>cantidad: {product.quantity}</h2>
+        </div>
+      ))}
       <Link to="/checkout">
         <Button variant="contained">Finalizar compra</Button>
       </Link>

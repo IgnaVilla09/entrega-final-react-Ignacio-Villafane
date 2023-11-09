@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { products } from "../../../productsMock";
 import { ItemDetail } from "./ItemDetail";
 import { useParams, useNavigate } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext";
 
 const ItemDetailContainer = () => {
   const [productSelected, setProductSelected] = useState({});
@@ -9,6 +10,8 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
+
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     let producto = products.find((product) => product.id === +id);
@@ -27,10 +30,8 @@ const ItemDetailContainer = () => {
       ...productSelected,
       quantity: cantidad,
     };
-    console.log("Agregado al carrito");
-    setTimeout(() => {
-      navigate("/cart");
-    }, 2000);
+
+    addToCart(obj);
   };
 
   return <ItemDetail productSelected={productSelected} onAdd={onAdd} />;
