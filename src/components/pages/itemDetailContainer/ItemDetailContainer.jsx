@@ -3,6 +3,7 @@ import { products } from "../../../productsMock";
 import { ItemDetail } from "./ItemDetail";
 import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
+import Swal from "sweetalert2";
 
 const ItemDetailContainer = () => {
   const [productSelected, setProductSelected] = useState({});
@@ -32,6 +33,13 @@ const ItemDetailContainer = () => {
     };
 
     addToCart(obj);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Producto agregado al carrito!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (

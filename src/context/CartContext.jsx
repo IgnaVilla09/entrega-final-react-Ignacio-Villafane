@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 export const CartContext = createContext();
+import Swal from "sweetalert2";
 
 const CartContextComponent = ({ children }) => {
   const [cart, setCart] = useState([]);
@@ -30,12 +31,46 @@ const CartContextComponent = ({ children }) => {
   };
 
   const clearCart = () => {
-    setCart([]);
+    Swal.fire({
+      title: "¿Quieres vaciar el carrito?",
+      text: "Se vaciara por completo!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Si, adelante!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Vaciado!",
+          text: "Carrito vacio.",
+          icon: "success",
+        });
+        setCart([]);
+      }
+    });
   };
 
   const deleteProduct = (id) => {
     let CartCleaned = cart.filter((product) => product.id !== id);
-    setCart(CartCleaned);
+    Swal.fire({
+      title: "¿Quieres eliminar este producto?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Si, adelante!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Eliminado!",
+          icon: "success",
+        });
+        setCart(CartCleaned);
+      }
+    });
   };
 
   const totalPrice = () => {
