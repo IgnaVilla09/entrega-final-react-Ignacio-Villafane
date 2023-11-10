@@ -25,6 +25,23 @@ export const ItemDetail = ({ productSelected, onAdd, initial }) => {
           <p>{productSelected.description}</p>
           <b>$ {productSelected.price}.</b>
         </div>
+
+        {
+          <div>
+            {initial >= 1 && (
+              <div
+                style={{
+                  background: "#f00",
+                  padding: "7px",
+                  borderRadius: "5px",
+                  color: "#fff",
+                }}
+              >
+                <h3>Tenes {initial} en el carrito!</h3>
+              </div>
+            )}
+          </div>
+        }
         <CounterContainer
           stock={productSelected.stock}
           onAdd={onAdd}
