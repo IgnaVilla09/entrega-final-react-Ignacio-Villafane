@@ -19,6 +19,7 @@
 - Utilización de contadores y tarjetas de presentación.
 - Maquetado de pages con componentes segmentados (containers y presentacionales)
 - Maquetado de pagina 404 Not Found.
+- Rutas privadas
 
 ### Muestra de funciones:
 
@@ -27,3 +28,4 @@
 - Se generan ordenes de compra que son obtenidas del carrito almacenado en LocalStorage
 - El navbar y footer tienen items de navegación dinámicas con Firebase
 - Se generan alertas cuando vaciamos el carrito, eliminamos items del carrito y colocamos la cantidad maxima de stock del producto.
+- En src/routes hay un componente ProtectedRoutes donde se hardcodea el rol del usuario. Con "Admin" se habilita la ruta "./dashboard" que permite la actualización de la base de datos mediante productsMockup.js, con cualquier otro rol se bloquea el acceso.
