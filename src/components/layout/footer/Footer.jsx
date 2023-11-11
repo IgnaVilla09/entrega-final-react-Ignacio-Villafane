@@ -16,7 +16,7 @@ const Footer = () => {
       });
       setItemsCategories(newList);
     });
-  });
+  }, []);
   return (
     <>
       <Box sx={{ width: "100%", backgroundColor: "#150681", height: "15vh" }}>

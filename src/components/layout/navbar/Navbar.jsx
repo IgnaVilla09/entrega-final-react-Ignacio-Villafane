@@ -18,7 +18,7 @@ export const Navbar = () => {
       });
       setItemsCategories(newList);
     });
-  });
+  }, []);
 
   return (
     <>
