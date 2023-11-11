@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDVl2AC3xzbRCGxSPvImGWyDyNHkncTIE4",
-  authDomain: "pf-coder-reactjs-ivillafane.firebaseapp.com",
-  projectId: "pf-coder-reactjs-ivillafane",
-  storageBucket: "pf-coder-reactjs-ivillafane.appspot.com",
-  messagingSenderId: "855130642382",
-  appId: "1:855130642382:web:15f962e4118dd2da2b3d9f",
-  measurementId: "G-RVRRHK3DY7",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

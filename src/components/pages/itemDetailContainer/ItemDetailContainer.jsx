@@ -40,9 +40,29 @@ const ItemDetailContainer = () => {
       timer: 1500,
     });
   };
+  const [email, setEmail] = useState("");
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    localStorage.setItem("userEmail", email);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Email registrado correctamente!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
 
   return (
     <ItemDetail
+      email={email}
+      handleEmailChange={handleEmailChange}
+      handleFormSubmit={handleFormSubmit}
       productSelected={productSelected}
       onAdd={onAdd}
       initial={totalQuantity}

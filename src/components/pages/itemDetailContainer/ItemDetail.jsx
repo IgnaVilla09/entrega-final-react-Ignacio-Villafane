@@ -2,9 +2,16 @@ import { Link } from "react-router-dom"; // Importa el componente Link
 import CounterContainer from "../../common/counter/CounterContainer";
 import "./ItemDetail.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Badge } from "@mui/material";
+import { Badge, Button, TextField } from "@mui/material";
 
-export const ItemDetail = ({ productSelected, onAdd, initial }) => {
+export const ItemDetail = ({
+  productSelected,
+  onAdd,
+  initial,
+  handleFormSubmit,
+  handleEmailChange,
+  email,
+}) => {
   return (
     <div>
       <div>
@@ -42,12 +49,44 @@ export const ItemDetail = ({ productSelected, onAdd, initial }) => {
             )}
           </div>
         }
-        <CounterContainer
-          stock={productSelected.stock}
-          onAdd={onAdd}
-          initial={initial}
-        />
+        {productSelected.stock == 0 ? (
+          <Button variant="outlined" disabled>
+            SIN STOCK
+          </Button>
+        ) : (
+          <CounterContainer
+            stock={productSelected.stock}
+            onAdd={onAdd}
+            initial={initial}
+          />
+        )}
       </div>
+      {productSelected.stock === 0 ? (
+        <form
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+          onSubmit={handleFormSubmit}
+        >
+          <h2>Si quieres ser notificado al recibir stock déjanos tu mail!</h2>
+          <TextField
+            required
+            sx={{ margin: "20px 0", width: "1200px" }}
+            name="email"
+            label="Email"
+            variant="outlined"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <Button type="submit" variant="contained">
+            Enviar
+          </Button>
+        </form>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

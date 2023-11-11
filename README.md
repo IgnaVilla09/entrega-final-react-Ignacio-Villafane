@@ -1,7 +1,26 @@
 # Entrega final CURSO CODERHOUSE REACT JS
 
+## Herramientas utilizadas:
+
+- React
+- SweetAlerts
+- Firebase
+- Material UI
+
+### Funciones:
+
 - Utilización de rutas de navegación
-- Utilización de MUI
-- Utilización de SweetAlerts
+- Utilización de técnicas de rendering
+- Utilización de LocalStorage
+- Utilización de contextos
 - Utilización de contadores y tarjetas de presentación.
-- Maquetado de pages con componentes, maquetado de pagina 404 Not Found.
+- Maquetado de pages con componentes segmentados (containers y presentacionales)
+- Maquetado de pagina 404 Not Found.
+
+### Muestra de funciones:
+
+- El producto Intel I7 tiene 0 unidades en stock, por lo que la tarjeta de presentación es diferente a quienes si poseen stock.
+- Se almacenan direcciones de mail en LocalStorage a quienes quieren ser notificados cuando regrese el stock
+- Se generan ordenes de compra que son obtenidas del carrito almacenado en LocalStorage
+- El navbar y footer tienen items de navegación dinámicas con Firebase
+- Se generan alertas cuando vaciamos el carrito, eliminamos items del carrito y colocamos la cantidad maxima de stock del producto.
