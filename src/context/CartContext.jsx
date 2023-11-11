@@ -3,7 +3,9 @@ export const CartContext = createContext();
 import Swal from "sweetalert2";
 
 const CartContextComponent = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   const addToCart = (product) => {
     let exist = itemExist(product.id);
@@ -16,13 +18,16 @@ const CartContextComponent = ({ children }) => {
         }
       });
       setCart(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
     } else {
       setCart([...cart, product]);
+      localStorage.setItem("cart", JSON.stringify([...cart, product]));
     }
   };
 
   const itemExist = (id) => {
-    return cart.some((elemento) => elemento.id === id);
+    let exist = cart.some((elemento) => elemento.id === id);
+    return exist;
   };
 
   const getStockProduct = (id) => {
@@ -48,6 +53,7 @@ const CartContextComponent = ({ children }) => {
           icon: "success",
         });
         setCart([]);
+        localStorage.removeItem("cart");
       }
     });
   };
@@ -69,6 +75,8 @@ const CartContextComponent = ({ children }) => {
           icon: "success",
         });
         setCart(CartCleaned);
+
+        localStorage.setItem("cart", JSON.stringify(CartCleaned));
       }
     });
   };
