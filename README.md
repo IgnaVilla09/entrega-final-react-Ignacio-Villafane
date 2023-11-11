@@ -29,3 +29,5 @@
 - El navbar y footer tienen items de navegación dinámicas con Firebase
 - Se generan alertas cuando vaciamos el carrito, eliminamos items del carrito y colocamos la cantidad maxima de stock del producto.
 - En src/routes hay un componente ProtectedRoutes donde se hardcodea el rol del usuario. Con "Admin" se habilita la ruta "./dashboard" que permite la actualización de la base de datos mediante productsMockup.js, con cualquier otro rol se bloquea el acceso.
+
+#### SE ADJUNTA GIF DE MUESTRA EN CARPETA SRC
