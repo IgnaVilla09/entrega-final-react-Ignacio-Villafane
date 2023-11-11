@@ -2,8 +2,24 @@ import { Box } from "@mui/material";
 import CartWidget from "../../common/cartWidget/CartWidget";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { getDocs, collection } from "firebase/firestore";
+import { dataBase } from "../../../firebaseConfig";
+import { useEffect, useState } from "react";
 
 export const Navbar = () => {
+  const [itemsCategories, setItemsCategories] = useState([]);
+
+  let navBar = collection(dataBase, "categories");
+
+  useEffect(() => {
+    getDocs(navBar).then((res) => {
+      let newList = res.docs.map((item) => {
+        return { id: item.id, ...item.data() };
+      });
+      setItemsCategories(newList);
+    });
+  });
+
   return (
     <>
       <Box className={"containerNavbar"} sx={{ height: 110 }}>
@@ -21,13 +37,13 @@ export const Navbar = () => {
           <Link to="/products">
             <li>Productos</li>
           </Link>
-          <Link to="/category/procesador">
-            <li>Procesadores</li>
-          </Link>
-          <Link to="/category/graficas">
-            <li>GPU´s</li>
-          </Link>
+          {itemsCategories.map((category) => (
+            <Link key={category.id} to={category.path}>
+              <li>{category.name}</li>
+            </Link>
+          ))}
         </ul>
+
         <CartWidget />
       </Box>
     </>
