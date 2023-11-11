@@ -58,6 +58,11 @@ const CartContextComponent = ({ children }) => {
     });
   };
 
+  const clearCartBuyed = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+  };
+
   const deleteProduct = (id) => {
     let CartCleaned = cart.filter((product) => product.id !== id);
     Swal.fire({
@@ -100,6 +105,7 @@ const CartContextComponent = ({ children }) => {
     addToCart,
     getStockProduct,
     clearCart,
+    clearCartBuyed,
     deleteProduct,
     totalPrice,
     totalQuantity,

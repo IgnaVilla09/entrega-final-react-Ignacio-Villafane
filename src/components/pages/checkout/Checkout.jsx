@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const Checkout = ({ setUser, user, handleSubmit }) => {
+const Checkout = ({ setUser, handleSubmit }) => {
   return (
     <Box
       component="form"
@@ -24,8 +24,9 @@ const Checkout = ({ setUser, user, handleSubmit }) => {
       <Badge component={"h1"}>Checkout</Badge>
       <Box>
         <TextField
+          required
           sx={{ margin: "20px 0" }}
-          id="name"
+          name="name"
           label="Nombre"
           variant="outlined"
           onChange={(event) => {
@@ -33,17 +34,19 @@ const Checkout = ({ setUser, user, handleSubmit }) => {
           }}
         />
         <TextField
+          required
           sx={{ margin: "20px 0" }}
-          id="lastname"
-          label="Apellido"
+          name="cellphone"
+          label="Numero de teléfono"
           variant="outlined"
           onChange={(event) => {
             setUser(event);
           }}
         />
         <TextField
+          required
           sx={{ margin: "20px 0" }}
-          id="email"
+          name="email"
           label="Email"
           variant="outlined"
           onChange={(event) => {

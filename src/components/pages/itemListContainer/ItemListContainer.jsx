@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import { getDocs, collection, where, query } from "firebase/firestore";
+import { getDocs, collection, where, query, addDoc } from "firebase/firestore";
 import { dataBase } from "../../../firebaseConfig";
+import { products } from "../../../productsMock";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   const { categoryName } = useParams();
+
+  const recargarDB = () => {
+    const prodCollection = collection(dataBase, "products");
+    products.forEach((elemento) => {
+      addDoc(prodCollection, elemento);
+    });
+  }; //Funcion que permite agregar productos a la base de datos
 
   useEffect(() => {
     let productsCollection = collection(dataBase, "products");
@@ -85,7 +93,7 @@ const ItemListContainer = () => {
     );
   }
 
-  return <ItemList items={items} />;
+  return <ItemList items={items} recargarDB={recargarDB} />;
 };
 
 export default ItemListContainer;
