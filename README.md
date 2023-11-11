@@ -1,5 +1,8 @@
 # Entrega final CURSO CODERHOUSE REACT JS
 
+![](https://upload.wikimedia.org/wikipedia/commons/7/75/Logo_blackbg.png)
+![](https://www.mobinius.com/wp-content/uploads/2020/02/reactjs-2.png)
+
 ## Herramientas utilizadas:
 
 - React
