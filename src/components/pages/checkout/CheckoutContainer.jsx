@@ -1,18 +1,27 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Checkout from "./Checkout";
 
 const CheckoutContainer = () => {
   const [user, setUserInfo] = useState({
-    nombre: "",
-    apellido: "",
+    name: "",
+    lastname: "",
     email: "",
   });
 
   const handleChange = (e) => {
-    setUserInfo({ ...user, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setUserInfo((prevUser) => ({ ...prevUser, [name]: value }));
   };
 
-  return <Checkout setUser={handleChange} user={user} />;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Datos del usuario:", user);
+    // Aquí puedes realizar acciones adicionales con los datos, como enviarlos a un servidor
+  };
+
+  return (
+    <Checkout setUser={handleChange} user={user} handleSubmit={handleSubmit} />
+  );
 };
 
 export default CheckoutContainer;
